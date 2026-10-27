@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Curiosidades e rotina pessoal de Renato: Muay Thai, disciplina marcial, rotina de estudos tech e hobbies digitais.">
+  <title>Curiosidades & Rotina | Renato - Desenvolvedor Web</title>
+
+  <!-- Favicon Moderno em SVG Embutido (sem dependências externas) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2225%22 fill=%22%230f172a%22/><text x=%2250%25%22 y=%2265%25%22 font-size=%2255%22 font-family=%22monospace%22 font-weight=%22bold%22 fill=%22%2300CCFF%22 text-anchor=%22middle%22>&lt;/&gt;</text></svg>">
+
+  <!-- Metatags Open Graph (OG) para Compartilhamento em Redes Sociais -->
+  <meta property="og:title" content="Curiosidades & Rotina | Renato Barbosa Aranega">
+  <meta property="og:description" content="Descubra a rotina de Muay Thai, dedicação aos estudos de desenvolvimento e hobbies de Renato.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="./foto-perfil.jpg">
+
+  <!-- Folha de estilos unificada do projeto -->
+  <link rel="stylesheet" href="./style.css">
+  
+  <!-- Script principal executado de forma assíncrona após a montagem do DOM -->
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <!-- Link de acessibilidade para saltar diretamente para o conteúdo principal via teclado (WCAG) -->
+  <a href="#main-content" class="pular-navegacao">Pular para o conteúdo principal</a>
+
+  <!-- Cabeçalho Principal e Barra de Navegação -->
+  <header class="cabecalho">
+    <div class="recipiente cabecalho-conteudo">
+      <!-- Marca / Logo do Aluno -->
+      <a href="./index.html" class="logotipo" aria-label="Página inicial">
+        <span class="icone-logo">&lt;/&gt;</span>
+        <span class="texto-logo">Renato<strong>.Dev</strong></span>
+      </a>
+
+      <!-- Menu de Navegação Semântico -->
+      <nav class="menu-navegacao" aria-label="Navegação Principal">
+        <ul class="lista-navegacao">
+          <li><a href="./index.html" class="link-navegacao">Sobre Mim</a></li>
+          <li><a href="./curiosidades.html" class="link-navegacao ativo">Curiosidades</a></li>
+          <li><a href="./lugares.html" class="link-navegacao">Lugares dos Sonhos</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botão de Alternância de Tema Claro/Escuro -->
+      <button id="botao-tema" class="botao-tema" aria-label="Alternar tema de cores" title="Alternar entre modo escuro e claro">🌙</button>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal da Página Curiosidades -->
+  <main id="main-content" class="conteudo-principal">
+    <div class="recipiente">
+      <!-- Cabeçalho introdutório da seção -->
+      <section class="secao-cabecalho" aria-labelledby="titulo-curiosidades">
+        <span class="etiqueta-destaque">Bastidores & Disciplina</span>
+        <h1 id="titulo-curiosidades" class="titulo-secao">Curiosidades, Paixões & Rotina</h1>
+        <p class="descricao-secao">
+          Conheça um pouco além do código: como o esporte de alto rendimento, o hábito diário de estudos e o universo dos jogos moldam minha mentalidade focada e resiliente.
+        </p>
+      </section>
+
+      <!-- Grade com os 3 Cartões de Curiosidades -->
+      <section class="grade-curiosidades" aria-label="Lista de curiosidades pessoais">
+        
+        <!-- Cartão 1: Artes Marciais / Muay Thai -->
+        <article class="cartao-curiosidade">
+          <div class="icone-cartao" aria-hidden="true">🥊</div>
+          <span class="etiqueta-cartao">Artes Marciais & Esporte</span>
+          <h2 class="titulo-cartao">Muay Thai & Superação</h2>
+          
+          <div class="destaque-estatistica">
+            <span class="valor-estatistica">2,5 Anos</span>
+            <span class="legenda-estatistica">de treino dedicado e 3 lutas oficiais disputadas</span>
+          </div>
+
+          <p class="texto-cartao">
+            Pratico a "Arte das Oito Armas" há cerca de dois anos e meio. Já subi no ringue em <strong>3 lutas oficiais</strong>, experiências que forjaram minha capacidade de manter a calma sob pressão, tomar decisões rápidas e respeitar o processo contínuo de evolução.
+          </p>
+          <p class="texto-cartao">
+            O Muay Thai não é apenas condicionamento físico; é uma filosofia de vida que transfiro diariamente para a programação: consistência, respeito, resiliência diante de erros e foco absoluto nas metas estabelecidas.
+          </p>
+
+          <div class="divisor-cartao" aria-hidden="true"></div>
+          
+          <div class="tags-cartao">
+            <span class="item-tag">Disciplina</span>
+            <span class="item-tag">Resiliência</span>
+            <span class="item-tag">3 Lutas Oficiais</span>
+          </div>
+        </article>
+
+        <!-- Cartão 2: Foco na Área Tech -->
+        <article class="cartao-curiosidade">
+          <div class="icone-cartao" aria-hidden="true">💻</div>
+          <span class="etiqueta-cartao">Carreira & Aprendizado</span>
+          <h2 class="titulo-cartao">Imersão Diária em Código</h2>
+          
+          <div class="destaque-estatistica">
+            <span class="valor-estatistica">VS Code</span>
+            <span class="legenda-estatistica">meu ecossistema principal de desenvolvimento</span>
+          </div>
+
+          <p class="texto-cartao">
+            Minha rotina de estudos é orientada pela prática real. Acredito que a melhor forma de fixar conceitos teóricos de algoritmos, estrutura de dados e interfaces é construindo projetos do zero em meu editor favorito, o <strong>Visual Studio Code</strong>.
+          </p>
+          <p class="texto-cartao">
+            Estou constantemente me desafiando a entender como o navegador processa o DOM, como aprimorar a acessibilidade web e como escrever códigos limpos, modularizados e eficientes, preparando-me com afinco para desafios do mercado corporativo de TI.
+          </p>
+
+          <div class="divisor-cartao" aria-hidden="true"></div>
+
+          <div class="tags-cartao">
+            <span class="item-tag">Lógica Prática</span>
+            <span class="item-tag">Interfaces Web</span>
+            <span class="item-tag">Evolução Contínua</span>
+          </div>
+        </article>
+
+        <!-- Cartão 3: Hobbies & Games -->
+        <article class="cartao-curiosidade">
+          <div class="icone-cartao" aria-hidden="true">🎮</div>
+          <span class="etiqueta-cartao">Lazer & Estratégia</span>
+          <h2 class="titulo-cartao">Games Competitivos & Setup</h2>
+          
+          <div class="destaque-estatistica">
+            <span class="valor-estatistica">Estratégia</span>
+            <span class="legenda-estatistica">trabalho em equipe e raciocínio analítico</span>
+          </div>
+
+          <p class="texto-cartao">
+            Nos momentos de descanso, sou entusiasta de <strong>jogos eletrônicos competitivos</strong>. Eles exercitam meu raciocínio tático, comunicação em tempo real com equipes e adaptação instantânea a cenários imprevisíveis.
+          </p>
+          <p class="texto-cartao">
+            Também tenho um grande apreço por personalizar meu ambiente operacional: otimizar atalhos de teclado no terminal, calibrar temas escuros de alto contraste e pesquisar novidades no ecossistema open-source e no hardware de computadores.
+          </p>
+
+          <div class="divisor-cartao" aria-hidden="true"></div>
+
+          <div class="tags-cartao">
+            <span class="item-tag">Pensamento Tático</span>
+            <span class="item-tag">Customização</span>
+            <span class="item-tag">Trabalho em Equipe</span>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- Seção de navegação complementar -->
+      <section class="secao-chamada" aria-label="Navegação complementar">
+        <p class="texto-chamada">Quer conhecer as metas internacionais que unem minhas duas maiores paixões?</p>
+        <a href="./lugares.html" class="botao-primario">Explorar Lugares dos Sonhos ✈️</a>
+      </section>
+    </div>
+  </main>
+
+  <!-- Rodapé Semântico com Links Conceituais -->
+  <footer class="rodape">
+    <div class="recipiente rodape-conteudo">
+      <div class="rodape-identificacao">
+        <p class="texto-etec">Projeto Acadêmico — <strong>Interfaces Web I</strong> | Etec</p>
+        <p class="texto-copyright">&copy; 2026 Renato. Todos os direitos reservados.</p>
+      </div>
+
+      <!-- Links Conceituais de Contato e Redes Profissionais -->
+      <nav class="rodape-links" aria-label="Links profissionais">
+        <a href="https://github.com/Renato-Aranega" target="_blank" rel="noopener noreferrer" class="link-social" aria-label="Acessar perfil de Renato no GitHub">GitHub</a>
+        <span class="separador-social" aria-hidden="true">•</span>
+        <a href="https://www.linkedin.com/in/renato-aranega/" target="_blank" rel="noopener noreferrer" class="link-social" aria-label="Acessar perfil de Renato no LinkedIn">LinkedIn</a>
+        <span class="separador-social" aria-hidden="true">•</span>
+        <a href="mailto:renato.aranega2026@gmail.com" class="link-social" aria-label="Enviar mensagem por E-mail">E-mail</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

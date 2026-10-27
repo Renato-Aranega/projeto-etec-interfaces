@@ -1,0 +1,1124 @@
+/* ==========================================================================
+   FOLHA DE ESTILOS UNIFICADA - TRABALHO PRÁTICO INTERFACES WEB I (ETEC)
+   Aluno: Renato | Curso: Técnico em Informática para Internet
+   Conceito: Design estático moderno, acessível, responsivo e com alternador de temas.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DEFINIÇÃO DAS VARIÁVEIS CSS (CUSTOM PROPERTIES)
+   Variáveis declaradas em português para controle unificado de paletas e medidas.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Paleta Padrão: Modo Escuro (Dark Mode) */
+  --cor-fundo: #0f172a;            /* Azul escuro profundo (slate-900) */
+  --cor-cartao: #1e293b;           /* Superfície elevada para cards (slate-800) */
+  --cor-texto-principal: #f8fafc;  /* Branco luminoso para títulos e leitura principal */
+  --cor-texto-secundario: #94a3b8; /* Cinza claro suave para legendas e parágrafos */
+  --cor-destaque: #00CCFF;         /* Azul ciano vibrante para contrastes e botões */
+  
+  /* Variáveis de suporte estrutural */
+  --cor-borda: rgba(255, 255, 255, 0.1);
+  --cor-borda-destaque: rgba(0, 204, 255, 0.4);
+  --sombra-cartao: 0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+  --sombra-hover: 0 20px 30px -10px rgba(0, 204, 255, 0.25);
+  
+  /* Tipografia do sistema (rápida, nativa e nítida) */
+  --fonte-principal: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Curvatura de bordas e transição global suave */
+  --raio-borda-p: 8px;
+  --raio-borda-m: 16px;
+  --raio-borda-g: 24px;
+  --raio-circulo: 50%;
+  --transicao-suave: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --------------------------------------------------------------------------
+   PALETA ALTERNATIVA: MODO CLARO (LIGHT MODE)
+   Ativada dinamicamente quando a classe .modo-claro é aplicada ao <body>
+   -------------------------------------------------------------------------- */
+body.modo-claro {
+  --cor-fundo: #f1f5f9;            /* Cinza suave para descanso visual (slate-100) */
+  --cor-cartao: #ffffff;           /* Fundo branco puro para cartões */
+  --cor-texto-principal: #0f172a;  /* Azul ardósia escuro para máxima legibilidade */
+  --cor-texto-secundario: #475569; /* Cinza médio balanceado */
+  --cor-destaque: #0284c7;         /* Azul oceano com alto índice de contraste WCAG */
+  
+  --cor-borda: rgba(15, 23, 42, 0.1);
+  --cor-borda-destaque: rgba(2, 132, 199, 0.4);
+  --sombra-cartao: 0 10px 20px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.04);
+  --sombra-hover: 0 16px 24px -6px rgba(2, 132, 199, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET CSS BÁSICO E CONFIGURAÇÕES GLOBAIS
+   Garante consistência de renderização entre diferentes navegadores.
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%; /* 16px por padrão */
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--fonte-principal);
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto-principal);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Link de salto de acessibilidade (WCAG 2.1) - Visível apenas quando focado via teclado */
+.pular-navegacao {
+  position: absolute;
+  top: -9999px;
+  left: 1.5rem;
+  background-color: var(--cor-destaque);
+  color: #0f172a;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--raio-borda-p);
+  font-weight: 700;
+  text-decoration: none;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: top 0.2s ease-in-out;
+}
+
+.pular-navegacao:focus {
+  top: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   3. RECIPIENTE E UTILITÁRIOS DE LAYOUT
+   Centraliza e restringe a largura dos blocos de conteúdo com espaçamentos fluidos.
+   -------------------------------------------------------------------------- */
+.recipiente {
+  width: 100%;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. CABEÇALHO E MENU DE NAVEGAÇÃO
+   Estrutura fixa ou de topo com alinhamento flexível e botão de alternância.
+   -------------------------------------------------------------------------- */
+.cabecalho {
+  background-color: var(--cor-cartao);
+  border-bottom: 1px solid var(--cor-borda);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  transition: var(--transicao-suave);
+  backdrop-filter: blur(8px);
+}
+
+.cabecalho-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  gap: 1.5rem;
+}
+
+/* Logotipo / Marca */
+.logotipo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--cor-texto-principal);
+  font-size: 1.25rem;
+  font-weight: 700;
+  transition: var(--transicao-suave);
+}
+
+.icone-logo {
+  color: var(--cor-destaque);
+  font-family: monospace;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.logotipo:hover {
+  transform: scale(1.03);
+}
+
+.logotipo strong {
+  color: var(--cor-destaque);
+}
+
+/* Lista do Menu de Navegação */
+.menu-navegacao {
+  display: flex;
+  align-items: center;
+}
+
+.lista-navegacao {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Links de Navegação com Indicador Ativo */
+.link-navegacao {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: var(--cor-texto-secundario);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: var(--raio-borda-p);
+  transition: var(--transicao-suave);
+  position: relative;
+}
+
+.link-navegacao:hover {
+  color: var(--cor-texto-principal);
+  background-color: rgba(0, 204, 255, 0.08);
+}
+
+/* Classe de identificação da página atual (Requisito da Etec) */
+.link-navegacao.ativo {
+  color: var(--cor-destaque);
+  background-color: rgba(0, 204, 255, 0.12);
+  font-weight: 700;
+}
+
+/* Botão de Alternância de Tema (Dark/Light) */
+.botao-tema {
+  background-color: transparent;
+  border: 1px solid var(--cor-borda);
+  color: var(--cor-texto-principal);
+  font-size: 1.35rem;
+  cursor: pointer;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--raio-borda-p);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transicao-suave);
+  user-select: none;
+}
+
+.botao-tema:hover {
+  border-color: var(--cor-destaque);
+  background-color: rgba(0, 204, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.botao-tema:active {
+  transform: scale(0.92);
+}
+
+/* --------------------------------------------------------------------------
+   5. CONTEÚDO PRINCIPAL (ÁREA CENTRAL FLEXÍVEL)
+   -------------------------------------------------------------------------- */
+.conteudo-principal {
+  flex: 1;
+  padding-top: 3.5rem;
+  padding-bottom: 4.5rem;
+}
+
+/* Cabeçalho de seções nas páginas internas */
+.secao-cabecalho {
+  text-align: center;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3.5rem;
+}
+
+.titulo-secao {
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.descricao-secao {
+  font-size: 1.05rem;
+  color: var(--cor-texto-secundario);
+}
+
+/* Etiqueta de destaque / Eyebrow */
+.etiqueta-destaque {
+  display: inline-block;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--cor-destaque);
+  background-color: rgba(0, 204, 255, 0.1);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid var(--cor-borda-destaque);
+}
+
+/* --------------------------------------------------------------------------
+   6. PÁGINA 1: CARTÃO DE PERFIL (INDEX.HTML)
+   Estrutura centralizada e limpa focada na biografia do aluno.
+   -------------------------------------------------------------------------- */
+.secao-perfil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartao-perfil {
+  background-color: var(--cor-cartao);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda-g);
+  padding: 3.5rem 3rem;
+  max-width: 780px;
+  width: 100%;
+  text-align: center;
+  box-shadow: var(--sombra-cartao);
+  transition: var(--transicao-suave);
+}
+
+.cartao-perfil:hover {
+  border-color: var(--cor-borda-destaque);
+  box-shadow: var(--sombra-hover);
+}
+
+/* Moldura e Imagem Circular do Avatar */
+.moldura-avatar {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.75rem auto;
+  border-radius: var(--raio-circulo);
+  padding: 4px;
+  border: 3px solid var(--cor-destaque);
+  box-shadow: 0 0 20px rgba(0, 204, 255, 0.3);
+  overflow: hidden;
+  transition: var(--transicao-suave);
+}
+
+.moldura-avatar:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.foto-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--raio-circulo);
+  display: block;
+}
+
+.nome-perfil {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-top: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.subtitulo-perfil {
+  font-size: 1.1rem;
+  color: var(--cor-texto-secundario);
+}
+
+.subtitulo-perfil strong {
+  color: var(--cor-destaque);
+}
+
+.divisor-decorativo {
+  width: 70px;
+  height: 4px;
+  background-color: var(--cor-destaque);
+  border-radius: 9999px;
+  margin: 1.5rem auto;
+}
+
+.biografia-perfil {
+  color: var(--cor-texto-secundario);
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: justify;
+}
+
+/* Pílulas de Tecnologias / Competências */
+.grupo-habilidades {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.item-habilidade {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.4rem 0.9rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--cor-borda);
+  border-radius: 9999px;
+  color: var(--cor-texto-principal);
+  transition: var(--transicao-suave);
+}
+
+body.modo-claro .item-habilidade {
+  background-color: rgba(15, 23, 42, 0.05);
+}
+
+.item-habilidade:hover {
+  border-color: var(--cor-destaque);
+  color: var(--cor-destaque);
+  transform: translateY(-2px);
+}
+
+/* Botões de Ação */
+.acoes-perfil {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.botao-primario,
+.botao-secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--raio-borda-p);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transicao-suave);
+}
+
+.botao-primario {
+  background-color: var(--cor-destaque);
+  color: #0f172a; /* Garante alto contraste com o ciano */
+  border: 1px solid var(--cor-destaque);
+}
+
+.botao-primario:hover {
+  filter: brightness(1.1);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px -5px rgba(0, 204, 255, 0.4);
+}
+
+.botao-secundario {
+  background-color: transparent;
+  color: var(--cor-texto-principal);
+  border: 1px solid var(--cor-borda);
+}
+
+.botao-secundario:hover {
+  border-color: var(--cor-destaque);
+  color: var(--cor-destaque);
+  transform: translateY(-3px);
+}
+
+/* --------------------------------------------------------------------------
+   7. PÁGINA 2: GRADE DE CURIOSIDADES (CURIOSIDADES.HTML)
+   Estrutura em Flexbox adaptativo para exibição dos 3 cartões temáticos.
+   -------------------------------------------------------------------------- */
+.grade-curiosidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.cartao-curiosidade {
+  background-color: var(--cor-cartao);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda-m);
+  padding: 2.25rem 2rem;
+  flex: 1 1 320px;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--sombra-cartao);
+  transition: var(--transicao-suave);
+  position: relative;
+}
+
+.cartao-curiosidade:hover {
+  transform: translateY(-6px);
+  border-color: var(--cor-borda-destaque);
+  box-shadow: var(--sombra-hover);
+}
+
+.icone-cartao {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.etiqueta-cartao {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--cor-destaque);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
+
+.titulo-cartao {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Destaque numérico / estatística */
+.destaque-estatistica {
+  background-color: rgba(0, 204, 255, 0.08);
+  border-left: 3px solid var(--cor-destaque);
+  padding: 0.75rem 1rem;
+  border-radius: 0 var(--raio-borda-p) var(--raio-borda-p) 0;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.valor-estatistica {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--cor-destaque);
+}
+
+.legenda-estatistica {
+  font-size: 0.85rem;
+  color: var(--cor-texto-secundario);
+}
+
+.texto-cartao {
+  color: var(--cor-texto-secundario);
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+}
+
+.divisor-cartao {
+  height: 1px;
+  background-color: var(--cor-borda);
+  margin-top: auto;
+  margin-bottom: 1.25rem;
+}
+
+.tags-cartao {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.item-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--cor-borda);
+  border-radius: 9999px;
+  color: var(--cor-texto-secundario);
+}
+
+body.modo-claro .item-tag {
+  background-color: rgba(15, 23, 42, 0.05);
+}
+
+/* Seção de Chamada para Ação no fim das páginas */
+.secao-chamada {
+  margin-top: 4.5rem;
+  text-align: center;
+  background-color: var(--cor-cartao);
+  border: 1px solid var(--cor-borda);
+  padding: 2.5rem 2rem;
+  border-radius: var(--raio-borda-m);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.texto-chamada {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--cor-texto-principal);
+}
+
+/* --------------------------------------------------------------------------
+   8. PÁGINA 3: DESTINOS DOS SONHOS (LUGARES.HTML)
+   Cartões horizontais/verticais com imagem, tags e descrição detalhada.
+   -------------------------------------------------------------------------- */
+.grade-destinos {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 980px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cartao-destino {
+  background-color: var(--cor-cartao);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda-m);
+  overflow: hidden;
+  box-shadow: var(--sombra-cartao);
+  display: flex;
+  flex-direction: row;
+  transition: var(--transicao-suave);
+}
+
+.cartao-destino:hover {
+  transform: translateY(-5px);
+  border-color: var(--cor-borda-destaque);
+  box-shadow: var(--sombra-hover);
+}
+
+.moldura-imagem-destino {
+  flex: 1 1 45%;
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+}
+
+.imagem-destino {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.cartao-destino:hover .imagem-destino {
+  transform: scale(1.05);
+}
+
+.emblema-destino {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: rgba(15, 23, 42, 0.85);
+  color: var(--cor-destaque);
+  border: 1px solid var(--cor-destaque);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(4px);
+}
+
+.conteudo-cartao-destino {
+  flex: 1 1 55%;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cabecalho-cartao-destino {
+  margin-bottom: 1rem;
+}
+
+.titulo-destino {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+
+.subtitulo-destino {
+  font-size: 0.95rem;
+  color: var(--cor-destaque);
+  font-weight: 600;
+}
+
+.tag-destaque {
+  border-color: var(--cor-destaque) !important;
+  color: var(--cor-destaque) !important;
+}
+
+.texto-destino {
+  color: var(--cor-texto-secundario);
+  font-size: 0.95rem;
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.6;
+}
+
+.detalhes-meta {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--cor-borda);
+  font-size: 0.85rem;
+}
+
+.rotulo-meta {
+  font-weight: 700;
+  color: var(--cor-texto-principal);
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.valor-meta {
+  color: var(--cor-texto-secundario);
+}
+
+/* --------------------------------------------------------------------------
+   9. RODAPÉ INSTITUCIONAL (FOOTER)
+   -------------------------------------------------------------------------- */
+.rodape {
+  background-color: var(--cor-cartao);
+  border-top: 1px solid var(--cor-borda);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-top: auto;
+  transition: var(--transicao-suave);
+}
+
+.rodape-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.texto-etec {
+  font-size: 0.95rem;
+  color: var(--cor-texto-principal);
+}
+
+.texto-copyright {
+  font-size: 0.825rem;
+  color: var(--cor-texto-secundario);
+  margin-top: 0.25rem;
+}
+
+.rodape-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.link-social {
+  color: var(--cor-texto-secundario);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: var(--transicao-suave);
+}
+
+.link-social:hover {
+  color: var(--cor-destaque);
+}
+
+.separador-social {
+  color: var(--cor-borda);
+  user-select: none;
+}
+
+/* --------------------------------------------------------------------------
+   10. MEDIA QUERIES (DESIGN RESPONSIVO AVANÇADO: TABLET E MOBILE)
+   Garante adaptação fluida em todas as resoluções com alvos de toque WCAG (44px+)
+   -------------------------------------------------------------------------- */
+
+/* --- TABLETS EM MODO PAISAGEM E TELAS MÉDIAS (Abaixo de 1024px) --- */
+@media (max-width: 1024px) {
+  .recipiente {
+    max-width: 900px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .grade-curiosidades {
+    gap: 1.5rem;
+  }
+
+  .cartao-curiosidade {
+    flex: 1 1 calc(50% - 1.5rem);
+    max-width: 100%;
+  }
+
+  .cartao-destino {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* --- TABLETS EM MODO RETRATO E DISPOSITIVOS MÉDIOS (Abaixo de 768px) --- */
+@media (max-width: 768px) {
+  .conteudo-principal {
+    padding-top: 2.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  /* Cabeçalho Responsivo */
+  .cabecalho-conteudo {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.85rem;
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+
+  .menu-navegacao {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lista-navegacao {
+    width: 100%;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .link-navegacao {
+    font-size: 0.9rem;
+    padding: 0.45rem 0.8rem;
+  }
+
+  /* Seções e Títulos */
+  .secao-cabecalho {
+    margin-bottom: 2.5rem;
+  }
+
+  .titulo-secao {
+    font-size: 1.95rem;
+  }
+
+  .descricao-secao {
+    font-size: 1rem;
+  }
+
+  /* Cartão de Perfil */
+  .cartao-perfil {
+    padding: 2.75rem 1.75rem;
+  }
+
+  .moldura-avatar {
+    width: 135px;
+    height: 135px;
+    margin-bottom: 1.5rem;
+  }
+
+  .nome-perfil {
+    font-size: 1.9rem;
+  }
+
+  .subtitulo-perfil {
+    font-size: 1rem;
+  }
+
+  .biografia-perfil {
+    font-size: 1rem;
+  }
+
+  /* Cartões de Curiosidades */
+  .grade-curiosidades {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .cartao-curiosidade {
+    flex: 1 1 100%;
+    max-width: 100%;
+    padding: 2rem 1.75rem;
+  }
+
+  /* Cartões de Destinos */
+  .grade-destinos {
+    gap: 2rem;
+  }
+
+  .cartao-destino {
+    flex-direction: column;
+  }
+
+  .moldura-imagem-destino {
+    min-height: 260px;
+    max-height: 320px;
+    flex: none;
+  }
+
+  .conteudo-cartao-destino {
+    padding: 2rem 1.75rem;
+    flex: none;
+  }
+
+  .titulo-destino {
+    font-size: 1.65rem;
+  }
+}
+
+/* --- SMARTPHONES E TELAS MOBILE (Abaixo de 480px) --- */
+@media (max-width: 480px) {
+  .recipiente {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .conteudo-principal {
+    padding-top: 1.75rem;
+    padding-bottom: 2.75rem;
+  }
+
+  /* Cabeçalho Compacto e Centrado */
+  .cabecalho-conteudo {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .logotipo {
+    font-size: 1.15rem;
+  }
+
+  .lista-navegacao {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem;
+  }
+
+  .link-navegacao {
+    font-size: 0.825rem;
+    padding: 0.45rem 0.65rem;
+    min-height: 44px; /* Atende ao padrão WCAG para alvo de toque */
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .botao-tema {
+    font-size: 1.2rem;
+    padding: 0.45rem 0.9rem;
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Títulos com quebra suave */
+  .titulo-secao {
+    font-size: 1.65rem;
+    line-height: 1.25;
+  }
+
+  .descricao-secao {
+    font-size: 0.925rem;
+  }
+
+  .etiqueta-destaque {
+    font-size: 0.725rem;
+    padding: 0.3rem 0.75rem;
+  }
+
+  /* Cartão de Perfil */
+  .cartao-perfil {
+    padding: 2rem 1.25rem;
+    border-radius: var(--raio-borda-m);
+  }
+
+  .moldura-avatar {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1.25rem;
+  }
+
+  .nome-perfil {
+    font-size: 1.6rem;
+    line-height: 1.25;
+  }
+
+  .subtitulo-perfil {
+    font-size: 0.925rem;
+    line-height: 1.4;
+  }
+
+  .biografia-perfil {
+    font-size: 0.925rem;
+    text-align: left; /* Melhora leitura em telas estreitas */
+    gap: 0.85rem;
+  }
+
+  /* Pílulas de Habilidades */
+  .grupo-habilidades {
+    gap: 0.45rem;
+    margin-bottom: 2rem;
+  }
+
+  .item-habilidade {
+    font-size: 0.775rem;
+    padding: 0.35rem 0.75rem;
+  }
+
+  /* Botões de Ação em Largura Total (Touch Friendly) */
+  .acoes-perfil {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .botao-primario,
+  .botao-secundario {
+    width: 100%;
+    min-height: 48px;
+    font-size: 0.925rem;
+    padding: 0.85rem 1rem;
+    text-align: center;
+  }
+
+  /* Cartão de Curiosidade */
+  .cartao-curiosidade {
+    padding: 1.75rem 1.25rem;
+    border-radius: var(--raio-borda-m);
+  }
+
+  .icone-cartao {
+    font-size: 2.2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .titulo-cartao {
+    font-size: 1.3rem;
+  }
+
+  .destaque-estatistica {
+    padding: 0.6rem 0.85rem;
+  }
+
+  .valor-estatistica {
+    font-size: 1.2rem;
+  }
+
+  .texto-cartao {
+    font-size: 0.9rem;
+  }
+
+  /* Cartão de Destino */
+  .cartao-destino {
+    border-radius: var(--raio-borda-m);
+  }
+
+  .moldura-imagem-destino {
+    min-height: 220px;
+    max-height: 260px;
+  }
+
+  .conteudo-cartao-destino {
+    padding: 1.65rem 1.25rem;
+  }
+
+  .titulo-destino {
+    font-size: 1.45rem;
+  }
+
+  .subtitulo-destino {
+    font-size: 0.875rem;
+  }
+
+  .texto-destino {
+    font-size: 0.9rem;
+  }
+
+  .tags-cartao {
+    gap: 0.35rem;
+  }
+
+  .item-tag {
+    font-size: 0.725rem;
+    padding: 0.2rem 0.55rem;
+  }
+
+  /* Seção de Chamada Final */
+  .secao-chamada {
+    padding: 2rem 1.25rem;
+    margin-top: 3rem;
+  }
+
+  .texto-chamada {
+    font-size: 1.05rem;
+  }
+
+  /* Rodapé */
+  .rodape {
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+
+  .rodape-conteudo {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .rodape-links {
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .link-social {
+    padding: 0.4rem 0.6rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+/* --- TELAS ULTRA-ESTREITAS (Abaixo de 360px - ex: iPhone SE 1ª Geração) --- */
+@media (max-width: 360px) {
+  .recipiente {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .nome-perfil {
+    font-size: 1.45rem;
+  }
+
+  .titulo-secao {
+    font-size: 1.45rem;
+  }
+
+  .lista-navegacao {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .link-navegacao {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* --- OTIMIZAÇÃO PARA DISPOSITIVOS TOUCHSCREEN --- */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove elevação de hover que pode 'travar' após o toque no mobile */
+  .cartao-perfil:hover,
+  .cartao-curiosidade:hover,
+  .cartao-destino:hover {
+    transform: none;
+  }
+
+  /* Feedback tátil instantâneo no toque */
+  .botao-primario:active,
+  .botao-secundario:active,
+  .botao-tema:active,
+  .link-navegacao:active {
+    transform: scale(0.96);
+    transition: transform 0.1s ease;
+  }
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Destinos dos sonhos de Renato: Tailândia para imersão e treinos de Muay Thai, e Estados Unidos para explorar grandes polos tecnológicos globais.">
+  <title>Lugares dos Sonhos | Renato - Desenvolvedor Web</title>
+
+  <!-- Favicon Moderno em SVG Embutido (sem dependências externas) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2225%22 fill=%22%230f172a%22/><text x=%2250%25%22 y=%2265%25%22 font-size=%2255%22 font-family=%22monospace%22 font-weight=%22bold%22 fill=%22%2300CCFF%22 text-anchor=%22middle%22>&lt;/&gt;</text></svg>">
+
+  <!-- Metatags Open Graph (OG) para Compartilhamento em Redes Sociais -->
+  <meta property="og:title" content="Destinos dos Sonhos | Renato Barbosa Aranega">
+  <meta property="og:description" content="Conheça os destinos internacionais dos sonhos de Renato: Tailândia e Estados Unidos.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="./foto-perfil.jpg">
+
+  <!-- Folha de estilos unificada do projeto -->
+  <link rel="stylesheet" href="./style.css">
+  
+  <!-- Script principal executado de forma assíncrona após a montagem do DOM -->
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <!-- Link de acessibilidade para saltar diretamente para o conteúdo principal via teclado (WCAG) -->
+  <a href="#main-content" class="pular-navegacao">Pular para o conteúdo principal</a>
+
+  <!-- Cabeçalho Principal e Barra de Navegação -->
+  <header class="cabecalho">
+    <div class="recipiente cabecalho-conteudo">
+      <!-- Marca / Logo do Aluno -->
+      <a href="./index.html" class="logotipo" aria-label="Página inicial">
+        <span class="icone-logo">&lt;/&gt;</span>
+        <span class="texto-logo">Renato<strong>.Dev</strong></span>
+      </a>
+
+      <!-- Menu de Navegação Semântico -->
+      <nav class="menu-navegacao" aria-label="Navegação Principal">
+        <ul class="lista-navegacao">
+          <li><a href="./index.html" class="link-navegacao">Sobre Mim</a></li>
+          <li><a href="./curiosidades.html" class="link-navegacao">Curiosidades</a></li>
+          <li><a href="./lugares.html" class="link-navegacao ativo">Lugares dos Sonhos</a></li>
+        </ul>
+      </nav>
+
+      <!-- Botão de Alternância de Tema Claro/Escuro -->
+      <button id="botao-tema" class="botao-tema" aria-label="Alternar tema de cores" title="Alternar entre modo escuro e claro">🌙</button>
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal da Página Lugares dos Sonhos -->
+  <main id="main-content" class="conteudo-principal">
+    <div class="recipiente">
+      <!-- Cabeçalho introdutório da seção -->
+      <section class="secao-cabecalho" aria-labelledby="titulo-lugares">
+        <span class="etiqueta-destaque">Metas Internacionais & Inspiração</span>
+        <h1 id="titulo-lugares" class="titulo-secao">Destinos dos Sonhos</h1>
+        <p class="descricao-secao">
+          Duas grandes metas de viagens internacionais que traduzem minha essência: aperfeiçoar a arte marcial em seu país de origem e vivenciar de perto o coração da inovação tecnológica global.
+        </p>
+      </section>
+
+      <!-- Grade dos Cartões de Destinos Internacionais -->
+      <section class="grade-destinos" aria-label="Lista de destinos dos sonhos">
+        
+        <!-- Destino 1: Tailândia (Muay Thai Camp Tradicional) -->
+        <article class="cartao-destino">
+          <div class="moldura-imagem-destino">
+            <img 
+              src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=900&q=80" 
+              alt="Paisagem monumental de templos e natureza na Tailândia" 
+              class="imagem-destino"
+              loading="lazy"
+            >
+            <span class="emblema-destino">Meta Esportiva & Cultural</span>
+          </div>
+
+          <div class="conteudo-cartao-destino">
+            <div class="cabecalho-cartao-destino">
+              <h2 class="titulo-destino">Tailândia 🇹🇭</h2>
+              <span class="subtitulo-destino">Treinamento em Camp Tradicional de Muay Thai</span>
+            </div>
+
+            <!-- Tags Estilizadas do Destino -->
+            <div class="tags-cartao" aria-label="Categorias do destino">
+              <span class="item-tag tag-destaque">Muay Thai Tradicional</span>
+              <span class="item-tag">Imersão Asiática</span>
+              <span class="item-tag">Treino de Alto Rendimento</span>
+              <span class="item-tag">Phuket & Bangkok</span>
+            </div>
+
+            <p class="texto-destino">
+              A Tailândia representa a realização de um grande objetivo de vida como lutador e praticante. A meta é passar um período treinando em um autêntico <em>camp</em> de Muay Thai (como em Phuket ou Chiang Mai), vivenciando a rotina rigorosa de treinos diários sob a tutela de mestres tailandeses nativos.
+            </p>
+            <p class="texto-destino">
+              Além do enriquecimento esportivo, a viagem proporcionará uma rica imersão na cultura milenar, nos templos sagrados e na gastronomia típica local, reforçando a disciplina, humildade e respeito às origens desta nobre arte marcial.
+            </p>
+
+            <div class="detalhes-meta">
+              <span class="rotulo-meta">Foco da Viagem:</span>
+              <span class="valor-meta">Aperfeiçoamento técnico marcial, resistência mental e vivência intercultural.</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Destino 2: Estados Unidos (Vale do Silício & Polos Tech) -->
+        <article class="cartao-destino">
+          <div class="moldura-imagem-destino">
+            <img 
+              src="https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=900&q=80" 
+              alt="Ponte Golden Gate e horizonte da Baía de São Francisco, Califórnia" 
+              class="imagem-destino"
+              loading="lazy"
+            >
+            <span class="emblema-destino">Meta Profissional & Inovação</span>
+          </div>
+
+          <div class="conteudo-cartao-destino">
+            <div class="cabecalho-cartao-destino">
+              <h2 class="titulo-destino">Estados Unidos 🇺🇸</h2>
+              <span class="subtitulo-destino">Imersão nos Grandes Polos de Tecnologia Global</span>
+            </div>
+
+            <!-- Tags Estilizadas do Destino -->
+            <div class="tags-cartao" aria-label="Categorias do destino">
+              <span class="item-tag tag-destaque">Vale do Silício</span>
+              <span class="item-tag">Carreira em TI</span>
+              <span class="item-tag">Big Techs & Startups</span>
+              <span class="item-tag">São Francisco & Nova York</span>
+            </div>
+
+            <p class="texto-destino">
+              Conhecer os Estados Unidos conecta-se diretamente com minhas aspirações na área de tecnologia. O plano central envolve visitar os lendários centros de inovação do <strong>Vale do Silício</strong> (Califórnia), sedes das gigantes mundiais de software, além de explorar a efervescência urbana e tecnológica de Nova York.
+            </p>
+            <p class="texto-destino">
+              Essa jornada tem como objetivo absorver a cultura de vanguarda em engenharia de software, participar de eventos e conferências globais de tecnologia e buscar inspiração nos ecossistemas que ditam o futuro da computação mundial.
+            </p>
+
+            <div class="detalhes-meta">
+              <span class="rotulo-meta">Foco da Viagem:</span>
+              <span class="valor-meta">Inspiração de carreira, ecossistema de ponta em TI e conexões internacionais.</span>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+      <!-- Seção de encerramento e retorno à biografia -->
+      <section class="secao-chamada" aria-label="Navegação complementar">
+        <p class="texto-chamada">Gostou de conhecer meus objetivos e trajetória?</p>
+        <a href="./index.html" class="botao-secundario">&larr; Voltar para Sobre Mim</a>
+      </section>
+    </div>
+  </main>
+
+  <!-- Rodapé Semântico com Links Conceituais -->
+  <footer class="rodape">
+    <div class="recipiente rodape-conteudo">
+      <div class="rodape-identificacao">
+        <p class="texto-etec">Projeto Acadêmico — <strong>Interfaces Web I</strong> | Etec</p>
+        <p class="texto-copyright">&copy; 2026 Renato. Todos os direitos reservados.</p>
+      </div>
+
+      <!-- Links Conceituais de Contato e Redes Profissionais -->
+      <nav class="rodape-links" aria-label="Links profissionais">
+        <a href="https://github.com/Renato-Aranega" target="_blank" rel="noopener noreferrer" class="link-social" aria-label="Acessar perfil de Renato no GitHub">GitHub</a>
+        <span class="separador-social" aria-hidden="true">•</span>
+        <a href="https://www.linkedin.com/in/renato-aranega/" target="_blank" rel="noopener noreferrer" class="link-social" aria-label="Acessar perfil de Renato no LinkedIn">LinkedIn</a>
+        <span class="separador-social" aria-hidden="true">•</span>
+        <a href="mailto:renato.aranega2026@gmail.com" class="link-social" aria-label="Enviar mensagem por E-mail">E-mail</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
