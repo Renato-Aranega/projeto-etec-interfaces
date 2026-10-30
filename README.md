@@ -39,8 +39,10 @@ Projeto Etec/
 | **HTML5 Semântico** | Marcação estruturada e acessível (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`). |
 | **CSS3 Moderno** | Layout flexível via Flexbox, variáveis nativas (CSS Custom Properties) e transições visuais suaves. |
 | **JavaScript (Vanilla)** | Manipulação do Document Object Model (DOM) e persistência de dados no `localStorage`. |
+| **React** | Biblioteca moderna para componentização de interfaces interativas e reativas. |
+| **Node.js** | Ecossistema e runtime JavaScript para construção de APIs e soluções back-end escaláveis. |
 | **Visual Studio Code** | Ambiente de desenvolvimento integrado (IDE) para edição e organização de código. |
-| **Git & GitHub** | Controle de versionamento de código-fonte e colaboração em nuvem. |
+| **Git & GitHub** | Controle de versionamento de código-fonte, fluxo com branches e colaboração em nuvem. |
 | **GitHub Pages** | Servidor de hospedagem estática global para publicação e demonstração online. |
 
 ---
